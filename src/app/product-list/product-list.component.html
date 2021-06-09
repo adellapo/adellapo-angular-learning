@@ -13,7 +13,7 @@
       se puede hacer un Property Binding usando [property] y pasarle
       el obj Producto y concatenarle Strings usando ''
     -->
-    <a [title]="product.name + ' details'">
+    <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
       {{ product.name }}
     </a>
 
