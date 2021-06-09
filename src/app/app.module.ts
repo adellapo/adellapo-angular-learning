@@ -7,23 +7,31 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-      { path: 'products/:productId', component: ProductDetailsComponent }
+      { path: '', component: ProductListComponent }
+      /* 
+
+          creo un endpoint 'products-endpoint' al que se le va pasar un 'algo' en la variable 'productId' para ver el componente ProductDetailsComponent
+
+          para esto usamos [routerLink] dentro de un <a> pasando un arreglo con el endpoint creado, products-endpoint, y el valor donde va a apuntar
+          
+          <a [routerLink]="['/products-endpoint', 'EJEMPLO_LINK']"></a> --> .../products-endpoint/EJEMPLO_LINK
+          <a [routerLink]="['/products-endpoint', 1]"></a> --> .../products-endpoint/1
+          <a [routerLink]="['/products-endpoint', product.id]"></a> --> .../products-endpoint/# (siendo # el id del producto)
+          
+        */
     ])
   ],
   declarations: [
     AppComponent,
     TopBarComponent,
     ProductListComponent,
-    ProductAlertsComponent,
-    ProductDetailsComponent
+    ProductAlertsComponent
   ],
   bootstrap: [AppComponent]
 })
