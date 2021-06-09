@@ -1,0 +1,47 @@
+<h2>Products</h2>
+<!-- 
+  *ngFor seria como un ForEach
+  En este caso agarra la lista de Products que hay en la variable myProducts 
+  La variable se declara en el componente product-list, este es el que importa la info estatica que hay en el archivo products.ts
+
+-->
+<div *ngFor="let product of myProducts">
+
+  <h3>
+
+    <!-- 
+      se puede hacer un Property Binding usando [property] y pasarle
+      el obj Producto y concatenarle Strings usando ''
+    -->
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+
+    <!--
+      *ngFor seria como un if, en este caso si existe una descripcion para
+      el producto se muestra <p>Descripcion: ...</p>
+    -->
+    <p *ngIf="product.description">
+      Description: {{ product.description}}
+    </p>
+
+    <!--
+      tambien se puede hacer Event Binding poniendo el evento que se quiere bindear entre () y luego pasarle el metodo que tiene que invocar, que en este caso es share() que es un metodo que esta en la clase ProductListComponent 
+    -->
+    <button (click)="share()">Share</button>
+
+    <!--
+      Salto error porque no todos los productos (que estan cargados estaticamente en la lista de products.ts) tenian el nuevo campo 'color'
+    -->
+    <app-product-alerts [aProduct]="product" (notify)="onNotify()">
+    </app-product-alerts>
+
+  </h3>
+
+</div>
+
+<br>
+<br>
+<br>
+<h4>Property Binding usando [property]</h4>
+<a title="EJEMPLO">ejemplo: hacer hover para ver el efecto de la propiedad title=EJEMPLO </a>
