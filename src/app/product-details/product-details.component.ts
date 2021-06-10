@@ -9,6 +9,7 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+  // el producto seleccionado
   product: Product | undefined;
 
   constructor(private route: ActivatedRoute, private cartServ: CartService) {}
@@ -16,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
+    // busco en el array de productos
     this.product = products.find(p => p.id === productIdFromRoute);
   }
 
