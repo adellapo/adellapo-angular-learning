@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+/*
+  HttpClient is a built-in way to fetch data from external APIs and provide them to your application as a stream.
 
+  Angular's HttpClientModule registers the providers your application needs to use the HttpClient service throughout your application
+*/
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -15,6 +20,10 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    /*
+      inject the HttpClient service into your service so your application can fetch data and interact with external APIs and resources
+    */
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
       /* 
@@ -29,7 +38,7 @@ import { CartComponent } from './cart/cart.component';
           
         */
       { path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart', component: CartComponent }
     ])
   ],
   declarations: [
