@@ -1,8 +1,8 @@
 <p>
-cart works!
+  cart works!
 </p>
 
-<div class="cart-item" *ngFor="let item from myCartItems">
+<div class="cart-item" *ngFor="let item of myCartItems">
   <span>{{ item.id }}</span>
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
